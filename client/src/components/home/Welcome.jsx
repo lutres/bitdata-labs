@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import WelcomPageImage from "../assets/welcome-page-image.png";
+import WelcomPageImage from "../../assets/welcome-page-image.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Avalanche from "../assets/avalanche.png"
-import BinanceSC from "../assets/binance.png"
-import Ethereum from "../assets/ethereum.png"
-import Polygon from "../assets/polygon.png"
+import Avalanche from "../../assets/avalanche.png"
+import BinanceSC from "../../assets/binance.png"
+import Ethereum from "../../assets/ethereum.png"
+import Polygon from "../../assets/polygon.png"
 import {FaConnectdevelop} from "react-icons/fa"
 
 const Welcome = () => {
   return (
     <section>
-      <div className="flex w-full justify-center items-center h-full">
+      <div className="flex w-full justify-center items-center">
         <div className="w-9/12 flex mf:flex-row flex-col items-center justify-between mt-[90px] mf:py-20 py-10 px-4">
           <div className="w-full flex flex-1 justify-start flex-col mf:mr-10">
             <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1 font-bold">
@@ -40,7 +40,7 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      <div className="w-full hidden md:block blue-glassmorphism border-0 rounded-none my-6 py-8 shadow-y-shadow">
+      <div className="w-full hidden md:block blue-glassmorphism border-0 rounded-none mt-6 py-8 shadow-y-shadow">
         <div className="mx-auto w-5/6 flex align-center">
           <div className="flex w-full items-center justify-between gap-8">
             <img src={Ethereum} alt="ethereum" className="h-14 cursor-pointer opacity-80"/>

@@ -12,6 +12,8 @@
     "alchemy-sdk": "^2.4.0",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
+    "flowbite": "^1.6.3",
+    "flowbite-react": "^0.3.8",
     "react": "^18.2.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18.2.0",
