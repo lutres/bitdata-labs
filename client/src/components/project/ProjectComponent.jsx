@@ -1,9 +1,10 @@
 import React from "react";
 import ImageCarrousel from "../../global/ImageCarrousel";
-import { Progress } from "flowbite-react";
-import Button from "../../global/Button";
+import { Progress, TextInput } from "flowbite-react";
+import { FaEthereum } from "react-icons/fa";
 
 const ProjectComponent = () => {
+  const { BuyProject } = useContext(TransactionContext);
   return (
     <div className="flex flex-col md:p-12 mf:py-12 py-10 w-11/12 mf:w-10/12 mb-10 blue-glassmorphism text-white">
       <h1 className="text-white text-4xl sm:text-5xl pt-5 sm:py-2 text-gradient text-center md:text-start font-semibold -my-10 md:my-0">
@@ -11,7 +12,7 @@ const ProjectComponent = () => {
       </h1>
       <div className="flex flex-col mf:flex-row mf:justify-between items-center mf:items-start gap-5 mf:pt-5">
         {/* Project images */}
-        <div className="basis-2/3">
+        <div className="basis-4/5">
           <ImageCarrousel />
           {/* Project info */}
           <div className="flex w-full md:mt-5 ">
@@ -27,7 +28,16 @@ const ProjectComponent = () => {
               enim. Curabitur arcu erat, accumsan id imperdiet et, porttitor at
               sem. Vestibulum ante ipsum primis in faucibus orci luctus et
               ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
-              aliquam vel, ullamcorper sit amet ligula.
+              aliquam vel, ullamcorper sit amet ligula. <br /> <br />
+              Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum
+              ac diam sit amet quam vehicula elementum sed sit amet dui.
+              Curabitur aliquet quam id dui posuere blandit. Nulla porttitor
+              accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in,
+              elementum id enim. Donec rutrum congue leo eget malesuada. Donec
+              rutrum congue leo eget malesuada. Curabitur arcu erat, accumsan id
+              imperdiet et, porttitor at sem. Donec sollicitudin molestie
+              malesuada. Curabitur arcu erat, accumsan id imperdiet et,
+              porttitor at sem.
             </p>
           </div>
         </div>
@@ -51,7 +61,21 @@ const ProjectComponent = () => {
               <span className="font-bold">February 31, 2023</span>
             </p>
           </div>
-          <button className="bg-[#2952e3] w-full py-4 px-7 rounded-full cursos-pointer hover:bg-[#2546bd]">
+          <div className="mb-3">
+            <TextInput
+              id="amount"
+              type="number"
+              icon={FaEthereum}
+              placeholder="Amount"
+              required={true}
+              min="0"
+              className="w-40"
+            />
+          </div>
+          <button
+            className="bg-[#2952e3] w-full py-4 px-7 rounded-full cursos-pointer hover:bg-[#2546bd]"
+            onClick={BuyProject}
+          >
             <p className="text-2xl text-white font-bold">Buy Project</p>
           </button>
         </div>
