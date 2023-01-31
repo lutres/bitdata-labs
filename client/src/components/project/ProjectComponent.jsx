@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageCarrousel from "../../global/ImageCarrousel";
 import { Progress, TextInput } from "flowbite-react";
 import { FaEthereum } from "react-icons/fa";
+import { useContext } from "react";
+import { TransactionContext } from "../../context/TransactionContext";
 
 const ProjectComponent = () => {
   const { BuyProject } = useContext(TransactionContext);
+  const [amount, setAmount] = useState(0)
+
   return (
     <div className="flex flex-col md:p-12 mf:py-12 py-10 w-11/12 mf:w-10/12 mb-10 blue-glassmorphism text-white">
       <h1 className="text-white text-4xl sm:text-5xl pt-5 sm:py-2 text-gradient text-center md:text-start font-semibold -my-10 md:my-0">
@@ -70,11 +74,13 @@ const ProjectComponent = () => {
               required={true}
               min="0"
               className="w-40"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
             />
           </div>
           <button
             className="bg-[#2952e3] w-full py-4 px-7 rounded-full cursos-pointer hover:bg-[#2546bd]"
-            onClick={BuyProject}
+            onClick={() => BuyProject(amount)}
           >
             <p className="text-2xl text-white font-bold">Buy Project</p>
           </button>

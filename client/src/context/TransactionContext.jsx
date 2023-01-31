@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import dotenv from "dotenv";
 import { Network, Alchemy } from "alchemy-sdk";
-import { Contract, ethers } from "ethers";
+import { ethers } from "ethers";
 
 export const TransactionContext = React.createContext();
 
 const { ethereum } = window;
-
-dotenv.config();
 
 // Variables
 
@@ -166,32 +163,35 @@ const abi = [
 
 // ALCHEMY SDK NODE PROVIDER
 const settings = {
-  apiKey: process.env.A_Key, // Replace with your Alchemy API Key.
+  apiKey: "yTqGIK6QqMH2fWUae6xINm9pIWHM3E6a", // Replace with your Alchemy API Key.
   network: Network.MATIC_MUMBAI, // Replace with your network.
 };
 const alchemy = new Alchemy(settings);
-const provider = await alchemy.config.getProvider();
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner()
 
 // INSTANCE A CONTRACT OBJECT
-const demoContract = new ethers.Contract(contractAddress, abi, provider);
+const demoContract = new ethers.Contract(contractAddress, abi, signer);
 
 export const TransactionsProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
 
+  
   const SomeComponent = () => {
     const BuyProjectHandle = async () => {
       if (!currentAccount) {
         await connectWallet();
       }
 
-      const demoContract = new ethers.Contract(contractAddress, abi, provider);
-      const options = { value: ethers.utils.parseEther(ether) };
+      const demoContract = new ethers.Contract(contractAddress, abi, signer);
+      const options = { value: ethers.utils.parseEther(ether.toString()) };
       await demoContract.BuyProject(idProject, options);
     };
   };
 
   //Buy Project bottom
-  const BuyProject = async () => {
+  const BuyProject = async (amount) => {
+    ether = amount
     const options = { value: ethers.utils.parseEther(ether) };
     await demoContract.BuyProject(idProject, options);
   };
@@ -258,6 +258,7 @@ export const TransactionsProvider = ({ children }) => {
       value={{
         connectWallet,
         currentAccount,
+        BuyProject
       }}
     >
       {children}
