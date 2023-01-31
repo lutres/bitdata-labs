@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Network, Alchemy } from "alchemy-sdk";
+import { Network, Alchemy} from "alchemy-sdk";
 import { ethers } from "ethers";
 
 export const TransactionContext = React.createContext();
@@ -12,153 +12,153 @@ let idProject = 1; // THIS MUST BE FRONT END DATA
 let amount = {}; // THIS MUST BE FRONT END IMPUT
 let ether = 0.01 * amount; // THIS MUST BE PROJECT PRICE VALUE FROM CONTRACT
 
-const contractAddress = "0xDB2248B84B3629ed8Fa09A83B431Dc5e8E40F46f";
+const contractAddress = "0xE68584CEA49f1B558e3Cf604c3d310280BB56fa6";
 const abi = [
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-    ],
-    name: "BuyProject",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_price",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_tokensToSell",
-        type: "uint256",
-      },
-    ],
-    name: "SetProject",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-    ],
-    name: "Withdraw",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-    ],
-    name: "getProject",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "_user",
-        type: "address",
-      },
-    ],
-    name: "infoInvestor",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "BuyProject",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_tokensToSell",
+				"type": "uint256"
+			}
+		],
+		"name": "SetProject",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "Withdraw",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getProject",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "infoInvestor",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
 ];
 
 // ALCHEMY SDK NODE PROVIDER
@@ -167,34 +167,50 @@ const settings = {
   network: Network.MATIC_MUMBAI, // Replace with your network.
 };
 const alchemy = new Alchemy(settings);
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-const signer = provider.getSigner()
+
+
+//const provider = new ethers.providers.Web3Provider(window.ethereum);
+//const signer = provider.getSigner()
 
 // INSTANCE A CONTRACT OBJECT
-const demoContract = new ethers.Contract(contractAddress, abi, signer);
+//const demoContract = new ethers.Contract(contractAddress, abi, signer);
 
 export const TransactionsProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
 
-  
-  const SomeComponent = () => {
-    const BuyProjectHandle = async () => {
-      if (!currentAccount) {
-        await connectWallet();
-      }
 
-      const demoContract = new ethers.Contract(contractAddress, abi, signer);
-      const options = { value: ethers.utils.parseEther(ether.toString()) };
-      await demoContract.BuyProject(idProject, options);
-    };
-  };
+
+  async function BuyProject() {
+    if (window.ethereum) {
+
+        const provider  = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(
+            contractAddress, 
+            abi,
+            signer
+            );
+        
+        try {
+            const response = await contract.BuyProject(idProject, {
+                value: ethers.utils.parseEther("0.001"),
+                gasLimit: 3000000
+            });
+            console.log("response", response );
+        } catch (err) {
+            console.log("error", err);
+        }
+    }
+}
+
 
   //Buy Project bottom
-  const BuyProject = async (amount) => {
-    ether = amount
-    const options = { value: ethers.utils.parseEther(ether) };
+  /*const BuyProject = async (amount) => {
+    ether = amount;
+    const options = { value: ethers.utils.parseEther("0.01")};
     await demoContract.BuyProject(idProject, options);
   };
+  */
 
   // GET INFO PROJECT TO FRONT END
   const GetInfoProject = async () => {
