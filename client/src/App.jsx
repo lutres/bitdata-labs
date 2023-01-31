@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navbar, Welcome} from "./components/index";
+import { Navbar, ProjectsPage, Welcome} from "./components/index";
 
 const App = () => {
   const [isTopOfPage, setIsTopOfPage] = useState(true);
@@ -16,11 +16,12 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen gradient-bg-welcome">
-      <div className="">
+    <div className="min-h-screen">
+      <div className="gradient-bg-welcome">
         <Navbar isTopOfPage={isTopOfPage}/>
         <Welcome />
       </div>
+        <ProjectsPage />
     </div>
   );
 }
