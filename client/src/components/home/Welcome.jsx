@@ -17,8 +17,7 @@ const Welcome = () => {
               Introduction to <br /> the Blockchain
             </h1>
             <p className="text-left mt-5 text-white font-light text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Our team of experts in Blockchain Development leverages this revolutionary technology to build innovative solutions that meet the needs of our clients. Whether you're looking to create a secure and transparent supply chain, streamline payment processes, or develop a new decentralized application, our team has the skills and expertise to help you bring your vision to life.
             </p>
             <AnchorLink
               href="#project"

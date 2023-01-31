@@ -54,14 +54,12 @@ contract DemoPro {
 
     //Off Chain Solution for Prices And Values in MATIC
     function BuyProject(uint256 _id) public payable returns (bool) {
-        require( msg.value > ProjectsPoint[_id].priceOfProject && ProjectsPoint[_id].tokenstoSell > 0 );
+        require( msg.value * 10**18 > ProjectsPoint[_id].priceOfProject && ProjectsPoint[_id].tokenstoSell > 0, "Error 1");
         ProjectsPoint[_id].infoInvestor[msg.sender].tokens.invested += msg.value;
-        ProjectsPoint[_id].infoInvestor[msg.sender].tokens.balance += msg.value/ProjectsPoint[_id].priceOfProject;
-        ProjectsPoint[_id].tokenstoSell -= msg.value/ProjectsPoint[_id].priceOfProject;
+        ProjectsPoint[_id].infoInvestor[msg.sender].tokens.balance += msg.value * 10**18  /ProjectsPoint[_id].priceOfProject;
+        ProjectsPoint[_id].tokenstoSell -= msg.value* 10**18 /ProjectsPoint[_id].priceOfProject ;
         ProjectsPoint[_id].infoInvestor[msg.sender].wallet = payable(msg.sender);
         ProjectsPoint[_id].salesOfProject += msg.value;
-
-
         return true;
     }
 
@@ -84,7 +82,7 @@ contract DemoPro {
         //Non Reentrant
 
         function Withdraw(uint256 _id) public payable returns (bool) {
-        require(ProjectsPoint[_id].salesOfProject > 0, "");
+        require(ProjectsPoint[_id].salesOfProject > 0, "Error not funds in contract");
         owner.transfer(ProjectsPoint[_id].salesOfProject);
         return(true);
 }
